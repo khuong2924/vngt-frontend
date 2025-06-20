@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "../../components/ui/button";
 import { DivSubsection } from "./sections/DivSubsection";
-import { DivWrapperSubsection } from "./sections/DivWrapperSubsection";
+import { DivWrapperSubsection } from "./sections/UuDaiTourHotHome";
 import { FooterSubsection } from "./sections/FooterSubsection";
-import { Frame1Subsection } from "./sections/Frame1Subsection";
-import { Frame2Subsection } from "./sections/Frame2Subsection";
+import { Frame1Subsection } from "./sections/TourKhachDoanHome";
+import { Frame2Subsection } from "./sections/TourGuideHome";
 import { Frame3Subsection } from "./sections/HeaderTourList";
 import { Frame4Subsection } from "./sections/Frame4Subsection";
 import { FrameSubsection } from "./sections/FrameSubsection";
