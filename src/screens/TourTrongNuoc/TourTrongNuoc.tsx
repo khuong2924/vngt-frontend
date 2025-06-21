@@ -1,10 +1,10 @@
 import React from "react";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { ContentSection } from "./sections/ContentSection/ContentSection";
-import { FooterSection } from "./sections/FooterSection";
-import { HeaderSection } from "./sections/HeaderSection";
-import { HeroSection } from "./sections/HeroSection";
-import { NavigationSection } from "./sections/NavigationSection";
+import { FooterSection } from "./sections/FooterSection/FooterSection";
+import { HeaderSection } from "./sections/HeaderSection/HeaderSection";
+import { HeroSection } from "./sections/HeroSection/HeroSection";
+import { NavigationSection } from "./sections/NavigationSection/NavigationSection";
 
 export const TourTrongNuoc = (): JSX.Element => {
   return (
