@@ -3,197 +3,170 @@ import {
     CheckIcon,
     ChevronDownIcon,
     MapPinIcon,
+    SearchIcon,
+    FilterIcon,
   } from "lucide-react";
-  import React from "react";
+  import React, { useState } from "react";
   import { Badge } from "../../../../components/ui/badge";
   import { Button } from "../../../../components/ui/button";
   import { Card, CardContent } from "../../../../components/ui/card";
+  import { TourCard } from "../../../../components/ui/tour-card";
   import {
     Select,
     SelectTrigger,
     SelectValue,
+    SelectContent,
+    SelectItem,
   } from "../../../../components/ui/select";
   import { Separator } from "../../../../components/ui/separator";
   
   export const ContentSection = (): JSX.Element => {
-    // Tour data for mapping
+    const [showDiscountedOnly, setShowDiscountedOnly] = useState(false);
+    const [sortBy, setSortBy] = useState("price-low");
+  
+    // Enhanced tour data with more details
     const tourData = [
       {
         id: 1,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Du lịch Sapa 3 ngày 2 đêm - Khám phá núi rừng Tây Bắc",
+        description: "Trải nghiệm văn hóa dân tộc, trekking núi Fansipan, thưởng thức ẩm thực địa phương độc đáo.",
+        destination: "Sapa, Lào Cai",
+        departureDate: "15/12/2024",
         price: "2.750.000 ₫",
+        originalPrice: "3.200.000 ₫",
         isHighlighted: true,
-        isDiscounted: false,
-        buttonVariant: "default",
+        isDiscounted: true,
+        buttonVariant: "default" as const,
+        rating: 4.8,
+        duration: "3 ngày 2 đêm",
+        groupSize: "8-15 người",
+        features: ["Khách sạn 4*", "Ăn sáng", "Hướng dẫn viên"]
       },
       {
         id: 2,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-1.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Tour Phú Quốc 4 ngày 3 đêm - Đảo ngọc Việt Nam",
+        description: "Thư giãn tại resort cao cấp, khám phá đảo ngọc với biển xanh cát trắng tuyệt đẹp.",
+        destination: "Phú Quốc, Kiên Giang",
+        departureDate: "20/12/2024",
+        price: "4.500.000 ₫",
+        originalPrice: "5.200.000 ₫",
         isHighlighted: false,
         isDiscounted: true,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.9,
+        duration: "4 ngày 3 đêm",
+        groupSize: "6-12 người",
+        features: ["Resort 5*", "Ăn buffet", "Spa"]
       },
       {
         id: 3,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-3.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Hội An - Đà Nẵng 3 ngày 2 đêm - Phố cổ di sản",
+        description: "Khám phá phố cổ Hội An, thưởng thức ẩm thực đặc sắc và văn hóa truyền thống.",
+        destination: "Hội An, Quảng Nam",
+        departureDate: "25/12/2024",
+        price: "3.200.000 ₫",
         isHighlighted: false,
         isDiscounted: false,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.7,
+        duration: "3 ngày 2 đêm",
+        groupSize: "10-20 người",
+        features: ["Khách sạn 4*", "Ăn sáng", "Thuyền thúng"]
       },
       {
         id: 4,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-3.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Nha Trang 3 ngày 2 đêm - Biển xanh cát trắng",
+        description: "Tận hưởng không khí biển trong lành, tham gia các hoạt động thể thao dưới nước.",
+        destination: "Nha Trang, Khánh Hòa",
+        departureDate: "30/12/2024",
+        price: "2.800.000 ₫",
         isHighlighted: false,
         isDiscounted: false,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.6,
+        duration: "3 ngày 2 đêm",
+        groupSize: "8-16 người",
+        features: ["Khách sạn 4*", "Ăn sáng", "Lặn biển"]
       },
       {
         id: 5,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-4.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Mũi Né 2 ngày 1 đêm - Đồi cát đỏ huyền thoại",
+        description: "Khám phá đồi cát đỏ, thưởng thức hải sản tươi ngon và ngắm hoàng hôn tuyệt đẹp.",
+        destination: "Mũi Né, Bình Thuận",
+        departureDate: "05/01/2025",
+        price: "1.800.000 ₫",
+        originalPrice: "2.200.000 ₫",
         isHighlighted: false,
         isDiscounted: true,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.5,
+        duration: "2 ngày 1 đêm",
+        groupSize: "6-12 người",
+        features: ["Resort 3*", "Ăn sáng", "Xe jeep"]
       },
       {
         id: 6,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-5.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Cần Thơ 2 ngày 1 đêm - Tây Đô sông nước",
+        description: "Trải nghiệm cuộc sống sông nước miền Tây, thưởng thức ẩm thực đặc sắc.",
+        destination: "Cần Thơ",
+        departureDate: "10/01/2025",
+        price: "1.500.000 ₫",
+        originalPrice: "1.800.000 ₫",
         isHighlighted: false,
         isDiscounted: true,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.4,
+        duration: "2 ngày 1 đêm",
+        groupSize: "8-15 người",
+        features: ["Khách sạn 3*", "Ăn sáng", "Thuyền sông"]
       },
       {
         id: 7,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-7.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Đà Lạt 3 ngày 2 đêm - Thành phố ngàn hoa",
+        description: "Khám phá thành phố mộng mơ, thưởng thức không khí mát mẻ và cảnh đẹp thiên nhiên.",
+        destination: "Đà Lạt, Lâm Đồng",
+        departureDate: "15/01/2025",
+        price: "2.900.000 ₫",
+        originalPrice: "3.500.000 ₫",
         isHighlighted: false,
         isDiscounted: true,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.7,
+        duration: "3 ngày 2 đêm",
+        groupSize: "10-18 người",
+        features: ["Resort 4*", "Ăn sáng", "Vườn hoa"]
       },
       {
         id: 8,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-7.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
-        isHighlighted: false,
-        isDiscounted: true,
-        buttonVariant: "outline",
-      },
-      {
-        id: 9,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-8.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
-        isHighlighted: false,
-        isDiscounted: true,
-        buttonVariant: "outline",
-      },
-      {
-        id: 10,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-9.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
-        isHighlighted: false,
-        isDiscounted: true,
-        buttonVariant: "outline",
-      },
-      {
-        id: 11,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-11.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        title: "Huế 2 ngày 1 đêm - Cố đô di sản",
+        description: "Tham quan các di tích lịch sử, thưởng thức ẩm thực cung đình Huế.",
+        destination: "Huế, Thừa Thiên Huế",
+        departureDate: "20/01/2025",
+        price: "2.200.000 ₫",
         isHighlighted: false,
         isDiscounted: false,
-        buttonVariant: "outline",
-      },
-      {
-        id: 12,
-        image: "https://c.animaapp.com/mc36n1re0wWczD/img/image-11.png",
-        title:
-          "Du lịch Phú Quốc Hè - Grand World - Vinwonders - Safari từ Sài Gòn 2025",
-        description:
-          "Lorem ipsum dolor sit amet consectetur. Velit accumsan sit posuere arcu. Mauris dui vulputate nulla scelerisque...",
-        destination: "Việt Nam",
-        departureDate: "22/08/2000",
-        price: "2.750.000 ₫",
-        isHighlighted: false,
-        isDiscounted: true,
-        buttonVariant: "outline",
+        buttonVariant: "outline" as const,
+        rating: 4.6,
+        duration: "2 ngày 1 đêm",
+        groupSize: "8-15 người",
+        features: ["Khách sạn 4*", "Ăn sáng", "Thuyền sông Hương"]
       },
     ];
   
     // Filter options
     const filterOptions = [
-      { id: 1, label: "Tour trong nước", isActive: true },
-      { id: 2, label: "Điểm khởi hành", isActive: false },
-      { id: 3, label: "Điểm đến", isActive: false },
-      { id: 4, label: "Số ngày", isActive: false },
+      { id: 1, label: "Tất cả tour", isActive: true },
+      { id: 2, label: "Miền Bắc", isActive: false },
+      { id: 3, label: "Miền Trung", isActive: false },
+      { id: 4, label: "Miền Nam", isActive: false },
     ];
   
     // Pagination data
@@ -206,343 +179,108 @@ import {
       { page: 22, isActive: false },
     ];
   
+    // Filter tours based on conditions
+    const filteredTours = tourData.filter(tour => {
+      if (showDiscountedOnly && !tour.isDiscounted) return false;
+      return true;
+    });
+  
     return (
-      <section className="flex flex-col w-full max-w-[1216px] mx-auto items-center justify-center gap-10 py-10">
-        <div className="flex flex-col items-start gap-10 w-full">
-          <div className="flex items-end justify-between w-full">
-            <h1 className="font-normal text-[#15191e] text-[40px] leading-[48px] [font-family:'Manrope',Helvetica] tracking-[0]">
+      <section className="flex flex-col w-full items-center justify-center gap-8 py-10">
+        {/* Header Section */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between w-full gap-6">
+          <div className="flex flex-col gap-2">
+            <h1 className="font-bold text-3xl md:text-4xl text-gray-800 [font-family:'Manrope',Helvetica]">
               Tour Trong Nước
             </h1>
-  
-            <div className="flex items-center gap-10">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center">
-                  <div className="relative w-4 h-4 bg-sup rounded overflow-hidden">
-                    <CheckIcon className="absolute w-3 h-3 top-0.5 left-0.5 text-white" />
-                  </div>
-                </div>
-  
-                <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-base tracking-[0] leading-[19.2px]">
-                  Hiển thị sản phẩm giảm giá
-                </span>
-              </div>
-  
-              <div className="flex items-center gap-3">
-                <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-base tracking-[0] leading-[19.2px]">
-                  Sắp xếp theo:
-                </span>
-  
-                <Select>
-                  <SelectTrigger className="bg-white rounded-[200px] border-none">
-                    <SelectValue
-                      placeholder="Giá thấp - cao"
-                      className="[font-family:'Manrope',Helvetica] font-semibold text-[#15191e] text-base tracking-[0] leading-4"
-                    />
-                    <ChevronDownIcon className="h-4 w-4" />
-                  </SelectTrigger>
-                </Select>
-              </div>
-            </div>
+            <p className="text-gray-600 text-lg">
+              Khám phá vẻ đẹp Việt Nam với những hành trình đặc biệt
+            </p>
           </div>
   
-          <div className="flex-col items-start gap-5 flex w-full">
-            <div className="flex items-center gap-3 w-full">
-              {filterOptions.map((option) => (
-                <Button
-                  key={option.id}
-                  variant="outline"
-                  className={`h-12 p-3 flex-1 justify-between rounded-[200px] ${
-                    option.isActive
-                      ? "border-main text-main font-semibold"
-                      : "border-[#d8dce3] text-[#65758b] font-normal"
-                  }`}
-                >
-                  {option.label}
-                  <ChevronDownIcon className="h-4 w-4" />
-                </Button>
-              ))}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            {/* Discount Filter */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center">
+                <div className="relative w-4 h-4 bg-red-500 rounded overflow-hidden">
+                  <CheckIcon className="absolute w-3 h-3 top-0.5 left-0.5 text-white" />
+                </div>
+              </div>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={showDiscountedOnly}
+                  onChange={(e) => setShowDiscountedOnly(e.target.checked)}
+                  className="w-4 h-4 text-[#009e74] rounded focus:ring-[#009e74]"
+                />
+                <span className="text-sm font-medium text-gray-700">
+                  Chỉ hiển thị tour giảm giá
+                </span>
+              </label>
+            </div>
   
-              <Button className="px-8 py-4 bg-main text-white rounded-[42px]">
-                Tìm kiếm
+            {/* Sort Options */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium text-gray-700">Sắp xếp:</span>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="bg-white rounded-full border-gray-200 min-w-[150px]">
+                  <SelectValue placeholder="Chọn sắp xếp" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="price-low">Giá thấp - cao</SelectItem>
+                  <SelectItem value="price-high">Giá cao - thấp</SelectItem>
+                  <SelectItem value="rating">Đánh giá cao nhất</SelectItem>
+                  <SelectItem value="popular">Phổ biến nhất</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+  
+        {/* Filter Buttons */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full">
+          <div className="flex flex-wrap items-center gap-3 flex-1">
+            {filterOptions.map((option) => (
+              <Button
+                key={option.id}
+                variant="outline"
+                className={`h-10 px-4 rounded-full transition-all duration-200 ${
+                  option.isActive
+                    ? "border-[#009e74] text-[#009e74] font-semibold bg-[#009e74]/5"
+                    : "border-gray-200 text-gray-600 hover:border-[#009e74] hover:text-[#009e74]"
+                }`}
+              >
+                {option.label}
               </Button>
-            </div>
+            ))}
           </div>
+  
+          <Button className="px-6 py-2 bg-[#009e74] text-white rounded-full hover:bg-[#008a66] transition-all duration-200 flex items-center gap-2">
+            <SearchIcon className="w-4 h-4" />
+            Tìm kiếm
+          </Button>
         </div>
   
-        <div className="flex flex-col items-start gap-6 w-full">
-          <div className="grid grid-cols-4 gap-6 w-full">
-            {tourData.slice(0, 4).map((tour) => (
-              <Card
-                key={tour.id}
-                className="flex flex-col w-full items-start gap-3 border-none relative"
-              >
-                <div className="relative w-full">
-                  <img
-                    className="w-full h-[214.5px] object-cover"
-                    alt={tour.title}
-                    src={tour.image}
-                  />
-                  {tour.isDiscounted && (
-                    <Badge className="absolute top-2.5 left-2.5 bg-sup text-white p-2 rounded-lg">
-                      Giảm giá
-                    </Badge>
-                  )}
-                </div>
-  
-                <CardContent className="p-0 flex flex-col gap-3 w-full">
-                  <h3
-                    className={`font-bold ${tour.isHighlighted ? "text-main" : "text-[#15191e]"} text-base leading-normal [font-family:'Manrope',Helvetica]`}
-                  >
-                    {tour.title}
-                  </h3>
-  
-                  <p className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                    {tour.description}
-                  </p>
-  
-                  <div className="flex flex-col gap-1 w-full">
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-1 w-[153px]">
-                        <MapPinIcon className="w-5 h-5" />
-                        <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                          Điểm đến
-                        </span>
-                      </div>
-                      <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                        {tour.destination}
-                      </span>
-                    </div>
-  
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-1 w-[153px]">
-                        <CalendarIcon className="w-5 h-5" />
-                        <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                          Khởi hành
-                        </span>
-                      </div>
-                      <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                        {tour.departureDate}
-                      </span>
-                    </div>
-                  </div>
-  
-                  <Separator className="my-1" />
-  
-                  <div className="flex items-start justify-between w-full">
-                    <div className="flex flex-col items-start">
-                      <span className="[font-family:'Roboto',Helvetica] font-normal text-[#65758b] text-sm leading-normal">
-                        Giá chỉ từ
-                      </span>
-                      <span className="[font-family:'Manrope',Helvetica] font-medium text-sup text-xl leading-normal">
-                        {tour.price}
-                      </span>
-                    </div>
-  
-                    <Button
-                      variant={
-                        tour.buttonVariant === "default" ? "default" : "outline"
-                      }
-                      className={`px-8 py-4 rounded-[42px] ${
-                        tour.buttonVariant === "default"
-                          ? "bg-main text-white"
-                          : "bg-[#00dba11a] text-main border-none"
-                      }`}
-                    >
-                      Chi tiết
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-  
-          <div className="grid grid-cols-4 gap-6 w-full">
-            {tourData.slice(4, 8).map((tour) => (
-              <Card
-                key={tour.id}
-                className="flex flex-col w-full items-start gap-3 border-none relative"
-              >
-                <div className="relative w-full">
-                  <img
-                    className="w-full h-[214.5px] object-cover"
-                    alt={tour.title}
-                    src={tour.image}
-                  />
-                  {tour.isDiscounted && (
-                    <Badge className="absolute top-2.5 left-2.5 bg-sup text-white p-2 rounded-lg">
-                      Giảm giá
-                    </Badge>
-                  )}
-                </div>
-  
-                <CardContent className="p-0 flex flex-col gap-3 w-full">
-                  <h3
-                    className={`font-bold ${tour.isHighlighted ? "text-main" : "text-[#15191e]"} text-base leading-normal [font-family:'Manrope',Helvetica]`}
-                  >
-                    {tour.title}
-                  </h3>
-  
-                  <p className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                    {tour.description}
-                  </p>
-  
-                  <div className="flex flex-col gap-1 w-full">
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-1 w-[153px]">
-                        <MapPinIcon className="w-5 h-5" />
-                        <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                          Điểm đến
-                        </span>
-                      </div>
-                      <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                        {tour.destination}
-                      </span>
-                    </div>
-  
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-1 w-[153px]">
-                        <CalendarIcon className="w-5 h-5" />
-                        <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                          Khởi hành
-                        </span>
-                      </div>
-                      <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                        {tour.departureDate}
-                      </span>
-                    </div>
-                  </div>
-  
-                  <Separator className="my-1" />
-  
-                  <div className="flex items-start justify-between w-full">
-                    <div className="flex flex-col items-start">
-                      <span className="[font-family:'Roboto',Helvetica] font-normal text-[#65758b] text-sm leading-normal">
-                        Giá chỉ từ
-                      </span>
-                      <span className="[font-family:'Manrope',Helvetica] font-medium text-sup text-xl leading-normal">
-                        {tour.price}
-                      </span>
-                    </div>
-  
-                    <Button
-                      variant={
-                        tour.buttonVariant === "default" ? "default" : "outline"
-                      }
-                      className={`px-8 py-4 rounded-[42px] ${
-                        tour.buttonVariant === "default"
-                          ? "bg-main text-white"
-                          : "bg-[#00dba11a] text-main border-none"
-                      }`}
-                    >
-                      Chi tiết
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-  
-          <div className="grid grid-cols-4 gap-6 w-full">
-            {tourData.slice(8, 12).map((tour) => (
-              <Card
-                key={tour.id}
-                className="flex flex-col w-full items-start gap-3 border-none relative"
-              >
-                <div className="relative w-full">
-                  <img
-                    className="w-full h-[214.5px] object-cover"
-                    alt={tour.title}
-                    src={tour.image}
-                  />
-                  {tour.isDiscounted && (
-                    <Badge className="absolute top-2.5 left-2.5 bg-sup text-white p-2 rounded-lg">
-                      Giảm giá
-                    </Badge>
-                  )}
-                </div>
-  
-                <CardContent className="p-0 flex flex-col gap-3 w-full">
-                  <h3
-                    className={`font-bold ${tour.isHighlighted ? "text-main" : "text-[#15191e]"} text-base leading-normal [font-family:'Manrope',Helvetica]`}
-                  >
-                    {tour.title}
-                  </h3>
-  
-                  <p className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                    {tour.description}
-                  </p>
-  
-                  <div className="flex flex-col gap-1 w-full">
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-1 w-[153px]">
-                        <MapPinIcon className="w-5 h-5" />
-                        <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                          Điểm đến
-                        </span>
-                      </div>
-                      <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                        {tour.destination}
-                      </span>
-                    </div>
-  
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-1 w-[153px]">
-                        <CalendarIcon className="w-5 h-5" />
-                        <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                          Khởi hành
-                        </span>
-                      </div>
-                      <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                        {tour.departureDate}
-                      </span>
-                    </div>
-                  </div>
-  
-                  <Separator className="my-1" />
-  
-                  <div className="flex items-start justify-between w-full">
-                    <div className="flex flex-col items-start">
-                      <span className="[font-family:'Roboto',Helvetica] font-normal text-[#65758b] text-sm leading-normal">
-                        Giá chỉ từ
-                      </span>
-                      <span className="[font-family:'Manrope',Helvetica] font-medium text-sup text-xl leading-normal">
-                        {tour.price}
-                      </span>
-                    </div>
-  
-                    <Button
-                      variant={
-                        tour.buttonVariant === "default" ? "default" : "outline"
-                      }
-                      className={`px-8 py-4 rounded-[42px] ${
-                        tour.buttonVariant === "default"
-                          ? "bg-main text-white"
-                          : "bg-[#00dba11a] text-main border-none"
-                      }`}
-                    >
-                      Chi tiết
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        {/* Tours Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+          {filteredTours.map((tour) => (
+            <TourCard key={tour.id} tour={tour} />
+          ))}
         </div>
   
-        <div className="flex items-center gap-1.5">
+        {/* Pagination */}
+        <div className="flex items-center justify-center gap-2 mt-8">
           {paginationItems.map((item, index) => (
             <Button
               key={index}
-              variant="outline"
-              className={`w-11 h-11 rounded-[42px] ${
+              variant={item.isActive ? "default" : "outline"}
+              className={`w-10 h-10 rounded-full ${
                 item.isActive
-                  ? "bg-sup text-white border-white"
-                  : "bg-white text-[#65758b] border-[#d8dce3]"
+                  ? "bg-[#009e74] text-white"
+                  : "border-gray-200 text-gray-600 hover:border-[#009e74] hover:text-[#009e74]"
               }`}
             >
-              <span className="[font-family:'Inter',Helvetica] font-medium text-center text-base leading-6">
-                {item.page}
-              </span>
+              {item.page}
             </Button>
           ))}
         </div>

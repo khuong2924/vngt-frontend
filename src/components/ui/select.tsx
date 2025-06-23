@@ -4,6 +4,8 @@ import { cn } from "../../lib/utils";
 interface SelectProps {
   children: React.ReactNode;
   className?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
 }
 
 interface SelectTriggerProps {
@@ -31,7 +33,7 @@ interface SelectItemProps {
 }
 
 export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, value, onValueChange, ...props }, ref) => {
     return (
       <div
         ref={ref}
