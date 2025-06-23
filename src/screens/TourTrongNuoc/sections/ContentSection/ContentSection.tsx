@@ -10,7 +10,7 @@ import {
   import { Badge } from "../../../../components/ui/badge";
   import { Button } from "../../../../components/ui/button";
   import { Card, CardContent } from "../../../../components/ui/card";
-  import { TourCard } from "../../../../components/ui/tour-card";
+  import { TourCard, TourData } from "../../../../components/tour";
   import {
     Select,
     SelectTrigger,
@@ -25,7 +25,7 @@ import {
     const [sortBy, setSortBy] = useState("price-low");
   
     // Enhanced tour data with more details
-    const tourData = [
+    const tourData: TourData[] = [
       {
         id: 1,
         image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
@@ -184,6 +184,11 @@ import {
       if (showDiscountedOnly && !tour.isDiscounted) return false;
       return true;
     });
+
+    const handleTourClick = (tourId: number) => {
+      console.log(`Tour clicked: ${tourId}`);
+      // Add navigation logic here
+    };
   
     return (
       <section className="flex flex-col w-full items-center justify-center gap-8 py-10">
@@ -264,7 +269,11 @@ import {
         {/* Tours Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full">
           {filteredTours.map((tour) => (
-            <TourCard key={tour.id} tour={tour} />
+            <TourCard 
+              key={tour.id} 
+              tour={tour} 
+              onClick={() => handleTourClick(tour.id)}
+            />
           ))}
         </div>
   

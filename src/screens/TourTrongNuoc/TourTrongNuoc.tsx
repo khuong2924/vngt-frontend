@@ -8,6 +8,8 @@ import { NavigationSection } from "./sections/NavigationSection/NavigationSectio
 export const TourTrongNuoc = (): JSX.Element => {
   return (
     <Layout>
+
+
       {/* Main content container with fixed width */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero section with enhanced styling */}
@@ -45,14 +47,8 @@ export const TourTrongNuoc = (): JSX.Element => {
         <div className="mb-16">
           <HeroSection />
         </div>
-
-        {/* Content section with enhanced spacing */}
-        <div className="mb-20">
-          <ContentSection />
-        </div>
-
-        {/* Call to action section with enhanced styling */}
-        <div className="mb-20">
+                {/* Call to action section with enhanced styling */}
+                <div className="mb-20">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-green-600/10 rounded-3xl"></div>
             <div className="relative z-10">
@@ -61,6 +57,12 @@ export const TourTrongNuoc = (): JSX.Element => {
           </div>
         </div>
 
+        {/* Content section with enhanced spacing */}
+        <div className="mb-20">
+          <ContentSection />
+        </div>
+
+        
         {/* Additional features section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">

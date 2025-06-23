@@ -4,9 +4,10 @@ import { Badge } from "../../../../components/ui/badge";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Separator } from "../../../../components/ui/separator";
+import { TourCard, TourData } from "../../../../components/tour";
 
 // Tour data for mapping
-const tourData = [
+const tourData: TourData[] = [
   {
     id: 1,
     title:
@@ -54,112 +55,38 @@ const tourData = [
 ];
 
 export const SectionComponentNodeSubsection = (): JSX.Element => {
+  const handleTourClick = (tourId: number) => {
+    console.log(`Tour clicked: ${tourId}`);
+    // Add navigation logic here
+  };
+
   return (
-    <section className="flex flex-col w-full items-start gap-10 py-10">
-      <div className="flex items-center justify-between w-full">
-        <h2 className="[font-family:'Manrope',Helvetica] font-normal text-graygray-07 text-[40px] leading-[48px]">
-          Tour Trong Nước
-        </h2>
-
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full rotate-180"
-              aria-label="Previous"
-            >
-              <ArrowRightIcon className="h-5 w-5" />
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              aria-label="Next"
-            >
-              <ArrowRightIcon className="h-5 w-5" />
-            </Button>
-          </div>
-
-          <Button
-            variant="ghost"
-            className="bg-[#00dba11a] text-main rounded-[42px] px-8 py-4 [font-family:'Manrope',Helvetica] font-medium"
-          >
-            Xem tất cả
-          </Button>
+    <section className="flex flex-col w-full items-center justify-center gap-8 py-10">
+      {/* Header Section */}
+      <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between w-full gap-6">
+        <div className="flex flex-col gap-2">
+          <h1 className="font-bold text-3xl md:text-4xl text-gray-800 [font-family:'Manrope',Helvetica]">
+            Tour Nổi Bật
+          </h1>
+          <p className="text-gray-600 text-lg">
+            Những tour du lịch được yêu thích nhất
+          </p>
         </div>
+
+        <Button className="px-6 py-2 bg-[#009e74] text-white rounded-full hover:bg-[#008a66] transition-all duration-200 flex items-center gap-2">
+          Xem tất cả
+          <ArrowRightIcon className="w-4 h-4" />
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
         {tourData.map((tour) => (
-          <Card key={tour.id} className="border-none shadow-none">
-            <CardContent className="p-0 flex flex-col gap-3">
-              <div className="relative">
-                <div className="w-full h-[214.5px] bg-gray-200 rounded-md"></div>
-                {tour.hasDiscount && (
-                  <Badge className="absolute top-2.5 left-2.5 bg-sup text-white font-semibold p-2 rounded-lg">
-                    Giảm giá
-                  </Badge>
-                )}
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <h3 className="[font-family:'Manrope',Helvetica] font-bold text-[#15191e] text-base">
-                  {tour.title}
-                </h3>
-                <p className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                  {tour.description}
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-1 w-[153px]">
-                    <MapPinIcon className="h-5 w-5" />
-                    <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                      Điểm đến
-                    </span>
-                  </div>
-                  <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                    {tour.destination}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-1 w-[153px]">
-                    <CalendarIcon className="h-5 w-5" />
-                    <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                      Khởi hành
-                    </span>
-                  </div>
-                  <span className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-sm leading-[21px]">
-                    {tour.departureDate}
-                  </span>
-                </div>
-              </div>
-
-              <Separator className="my-1" />
-
-              <div className="flex items-center justify-between w-full">
-                <div className="flex flex-col">
-                  <span className="[font-family:'Roboto',Helvetica] font-normal text-[#65758b] text-sm">
-                    Giá chỉ từ
-                  </span>
-                  <span className="[font-family:'Manrope',Helvetica] font-medium text-sup text-xl">
-                    {tour.price}
-                  </span>
-                </div>
-
-                <Button
-                  variant="ghost"
-                  className="bg-[#00dba11a] text-main rounded-[42px] px-8 py-4 [font-family:'Manrope',Helvetica] font-medium"
-                >
-                  Chi tiết
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <TourCard 
+            key={tour.id} 
+            tour={tour} 
+            variant="compact"
+            onClick={() => handleTourClick(tour.id)}
+          />
         ))}
       </div>
     </section>
