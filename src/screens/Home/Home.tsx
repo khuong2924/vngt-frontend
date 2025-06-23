@@ -1,15 +1,14 @@
 import React from "react";
 import { Button } from "../../components/ui/button";
+import { Layout } from "../../components/layout";
 import { DivSubsection } from "./sections/DivSubsection";
 import { DivWrapperSubsection } from "./sections/UuDaiTourHotHome";
-import { FooterSubsection } from "./sections/FooterSubsection";
 import { Frame1Subsection } from "./sections/TourKhachDoanHome";
 import { Frame2Subsection } from "./sections/TourGuideHome";
 import { Frame3Subsection } from "./sections/HeaderTourList";
 import { Frame4Subsection } from "./sections/Frame4Subsection";
 import { FrameSubsection } from "./sections/FrameSubsection";
 import { FrameWrapperSubsection } from "./sections/SearchFrame";
-import { HeaderSubsection } from "./sections/HeaderSubsection";
 import { OverlapWrapperSubsection } from "./sections/OverlapWrapperSubsection";
 import { SectionComponentNodeSubsection } from "./sections/TourHotSection";
 // import { HeaderTourList } from "./sections/HeaderTourList";
@@ -49,10 +48,7 @@ export const Home = (): JSX.Element => {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* Header section - Full width */}
-      <HeaderSubsection />
-
+    <Layout>
       {/* Main content container with fixed width */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero section */}
@@ -171,9 +167,6 @@ export const Home = (): JSX.Element => {
         <OverlapWrapperSubsection />
         <Frame4Subsection />
       </div>
-
-      {/* Footer section - Full width */}
-      <FooterSubsection />
-    </div>
+    </Layout>
   );
 };

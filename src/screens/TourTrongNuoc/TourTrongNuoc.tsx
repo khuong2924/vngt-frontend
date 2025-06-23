@@ -1,6 +1,5 @@
 import React from "react";
-import { HeaderSubsection } from "../Home/sections/HeaderSubsection";
-import { FooterSubsection } from "../Home/sections/FooterSubsection";
+import { Layout } from "../../components/layout";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { ContentSection } from "./sections/ContentSection/ContentSection";
 import { HeroSection } from "./sections/HeroSection/HeroSection";
@@ -8,10 +7,7 @@ import { NavigationSection } from "./sections/NavigationSection/NavigationSectio
 
 export const TourTrongNuoc = (): JSX.Element => {
   return (
-    <div className="bg-white min-h-screen">
-      {/* Header section - Full width, same as Home */}
-      <HeaderSubsection />
-
+    <Layout>
       {/* Main content container with fixed width */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero section with enhanced styling */}
@@ -160,9 +156,6 @@ export const TourTrongNuoc = (): JSX.Element => {
           </div>
         </div>
       </div>
-
-      {/* Footer section - Full width, same as Home */}
-      <FooterSubsection />
-    </div>
+    </Layout>
   );
 };

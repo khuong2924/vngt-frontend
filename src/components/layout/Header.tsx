@@ -1,20 +1,20 @@
 import { ChevronDownIcon } from "lucide-react";
 import React from "react";
-import { Button } from "../../../../components/ui/button";
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../../../../components/ui/dropdown-menu";
+} from "../ui/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "../../../../components/ui/navigation-menu";
+} from "../ui/navigation-menu";
 
-export const HeaderSubsection = (): JSX.Element => {
+export const Header = (): JSX.Element => {
   // Top navigation links
   const topNavLinks = [
     "Dịch vụ Visa",
@@ -142,4 +142,4 @@ export const HeaderSubsection = (): JSX.Element => {
       </div>
     </header>
   );
-};
+}; 
