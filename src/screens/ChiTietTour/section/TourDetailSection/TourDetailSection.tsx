@@ -58,7 +58,7 @@ export const TourDetailsSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full max-w-[1216px] items-start gap-10 mx-auto">
+    <section className="flex flex-col w-full items-start gap-10">
       <h2 className="font-normal text-[#15191e] text-[40px] leading-[48px] font-['Manrope',Helvetica]">
         Khách Hàng Nói Gì Về Chúng Tôi?
       </h2>
@@ -68,7 +68,7 @@ export const TourDetailsSection = (): JSX.Element => {
           {testimonials.map((testimonial) => (
             <CarouselItem key={testimonial.id} className="flex-none">
               <Card
-                className={`w-[390px] rounded-3xl overflow-hidden bg-white ${testimonial.opacity} ${testimonial.shadow || ""}`}
+                className={`w-[390px] rounded-3xl overflow-hidden bg-white ${testimonial.opacity} ${testimonial.shadow || ""} hover:shadow-2xl transition-all duration-300 hover:scale-105`}
               >
                 <CardContent className="flex flex-col items-start gap-[100px] p-6">
                   <div className="flex flex-col h-56 items-start justify-end gap-5 w-full">
@@ -83,7 +83,7 @@ export const TourDetailsSection = (): JSX.Element => {
                   </div>
 
                   <div className="flex items-center gap-3 w-full">
-                    <Avatar className="w-12 h-12">
+                    <Avatar className="w-12 h-12 shadow-md hover:shadow-lg transition-all duration-300">
                       <AvatarImage
                         src="https://c.animaapp.com/mc8humq02LtpLJ/img/ellipse-7.svg"
                         alt="User avatar"

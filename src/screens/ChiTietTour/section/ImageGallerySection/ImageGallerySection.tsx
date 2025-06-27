@@ -14,11 +14,11 @@ export const ImageGallerySection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full max-w-[1216px] items-start gap-10 mx-auto">
+    <section className="flex flex-col w-full items-start gap-10">
       <div className="flex flex-col items-start justify-center gap-2.5 w-full">
         {/* Breadcrumb navigation */}
         <nav className="w-80 [font-family:'Manrope',Helvetica] font-normal text-base tracking-[0] leading-6">
-          <span className="text-[#65758b]">Trang chủ</span>
+          <span className="text-[#65758b] hover:text-[#00dba1] transition-colors duration-300 cursor-pointer">Trang chủ</span>
           <span className="text-[#15191e]">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
           <span className="font-semibold text-[#15191e]"> Tour trong nước</span>
         </nav>
@@ -34,7 +34,7 @@ export const ImageGallerySection = (): JSX.Element => {
       <div className="flex items-start gap-4 w-full">
         {/* Main large image */}
         <img
-          className="w-[890px] h-[455px] object-cover rounded-lg"
+          className="w-[890px] h-[455px] object-cover rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
           alt="Phu Quoc beach destination"
           src="https://c.animaapp.com/mc8humq02LtpLJ/img/image-6.png"
         />
@@ -42,7 +42,7 @@ export const ImageGallerySection = (): JSX.Element => {
         {/* Right sidebar */}
         <div className="flex flex-col w-[310px] items-start gap-4">
           {/* Reviews card */}
-          <Card className="w-full bg-[#e5fff8] border-none">
+          <Card className="w-full bg-[#e5fff8] border-none shadow-lg hover:shadow-xl transition-all duration-300">
             <CardContent className="flex flex-col items-start justify-center gap-4 p-4">
               {/* Rating and user images */}
               <div className="flex items-center justify-between w-full">
@@ -63,7 +63,7 @@ export const ImageGallerySection = (): JSX.Element => {
                   {reviewImages.map((src, index) => (
                     <img
                       key={`review-image-${index}`}
-                      className="w-8 h-8 object-cover"
+                      className="w-8 h-8 object-cover rounded-full border-2 border-white shadow-sm hover:scale-110 transition-all duration-300"
                       alt={`Customer review ${index + 1}`}
                       src={src}
                     />
@@ -84,14 +84,14 @@ export const ImageGallerySection = (): JSX.Element => {
 
               {/* Action buttons */}
               <div className="flex items-start gap-2 w-full">
-                <Button className="flex-1 bg-[#00dba1] hover:bg-[#00c491] text-white font-medium rounded-[42px] px-8 py-4 h-auto">
+                <Button className="flex-1 bg-[#00dba1] hover:bg-[#00c491] text-white font-medium rounded-[42px] px-8 py-4 h-auto shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                   Xem tất cả hình ảnh
                 </Button>
 
                 <Button
                   size="icon"
                   variant="outline"
-                  className="p-3 bg-white rounded-full border-none"
+                  className="p-3 bg-white rounded-full border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-[#00dba1] hover:text-white"
                 >
                   <PlayIcon className="w-6 h-6" />
                 </Button>
@@ -101,7 +101,7 @@ export const ImageGallerySection = (): JSX.Element => {
 
           {/* Secondary image */}
           <img
-            className="w-full h-60 object-cover rounded-lg"
+            className="w-full h-60 object-cover rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             alt="Secondary tour image"
             src="https://c.animaapp.com/mc8humq02LtpLJ/img/image-1.png"
           />

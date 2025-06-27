@@ -132,7 +132,7 @@ const termsAndRegulations = [
 
 export const MainContentSection = (): JSX.Element => {
   return (
-    <section className="flex gap-10 px-[148px] py-[100px] bg-white rounded-[60px_60px_0px_0px] shadow-[0px_-16px_32px_#0000001a]">
+    <section className="flex gap-10 py-16 bg-white rounded-3xl shadow-xl border border-gray-100">
       {/* Main content column */}
       <div className="flex flex-col w-[763px] gap-10">
         {/* Tour Overview Section */}
@@ -147,7 +147,7 @@ export const MainContentSection = (): JSX.Element => {
             Morbi facilisis viverra in sit et diam aliquet platea.
           </p>
           <img
-            className="w-full h-[350px] object-cover"
+            className="w-full h-[350px] object-cover rounded-2xl shadow-lg"
             alt="Tour overview image"
             src="https://c.animaapp.com/mc8humq02LtpLJ/img/image-6.png"
           />
@@ -163,7 +163,7 @@ export const MainContentSection = (): JSX.Element => {
 
           <div className="flex flex-col gap-10">
             {itineraryData.map((item, index) => (
-              <div key={`day-${index}`} className="flex flex-col gap-4">
+              <div key={`day-${index}`} className="flex flex-col gap-4 p-6 bg-gray-50 rounded-2xl hover:shadow-md transition-all duration-300">
                 <div className="flex items-center gap-4">
                   <div className="flex w-10 h-10 items-center p-[9.23px] bg-color-4 rounded-[769.23px]">
                     <div className="flex items-center p-[3.08px] bg-white rounded-[43.85px]">
@@ -198,8 +198,8 @@ export const MainContentSection = (): JSX.Element => {
                   </div>
                   <img
                     className="absolute w-px h-full top-[-21px] left-5"
-                    alt="Timeline"
-                    src={`https://c.animaapp.com/mc8humq02LtpLJ/img/vector-3${index === 2 ? "-1" : index === 0 ? "-2" : ""}.svg`}
+                    alt="Timeline line"
+                    src="https://c.animaapp.com/mc8humq02LtpLJ/img/vector-15.svg"
                   />
                 </div>
               </div>
@@ -211,44 +211,47 @@ export const MainContentSection = (): JSX.Element => {
 
         {/* Featured Activities Section */}
         <div className="flex flex-col gap-10">
-          <div className="flex items-center justify-between">
-            <h2 className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-[40px] leading-[48px]">
-              Hoạt Động Nổi Bật
-            </h2>
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="p-3.5 bg-[#f9f9f9] rounded-[200px] rotate-180"
-              >
-                <ArrowRightIcon className="w-5 h-5 rotate-180" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="p-3.5 bg-[#f9f9f9] rounded-[200px]"
-              >
-                <ArrowRightIcon className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
+          <h2 className="[font-family:'Manrope',Helvetica] font-normal text-[#15191e] text-[40px] leading-[48px]">
+            Hoạt Động Nổi Bật
+          </h2>
 
-          <div className="flex items-center gap-6">
-            {featuredActivities.map((activity, index) => (
-              <div
-                key={`activity-${index}`}
-                className={`flex flex-col items-start gap-4 ${index === 2 ? "mr-[-143px]" : ""}`}
-              >
-                <img
-                  className={`${index === 2 ? "w-[143px]" : "w-[286px]"} h-[286px] object-cover`}
-                  alt={activity.title}
-                  src={activity.image}
-                />
-                <h3 className="[font-family:'Manrope',Helvetica] font-semibold text-[#15191e] text-base leading-4">
-                  {activity.title}
-                </h3>
+          <div className="flex flex-col gap-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="p-3.5 bg-[#f9f9f9] rounded-[200px] rotate-180 hover:bg-[#00dba1] hover:text-white transition-all duration-300"
+                >
+                  <ArrowRightIcon className="w-5 h-5 rotate-180" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="p-3.5 bg-[#f9f9f9] rounded-[200px] hover:bg-[#00dba1] hover:text-white transition-all duration-300"
+                >
+                  <ArrowRightIcon className="w-5 h-5" />
+                </Button>
               </div>
-            ))}
+            </div>
+
+            <div className="flex items-center gap-6">
+              {featuredActivities.map((activity, index) => (
+                <div
+                  key={`activity-${index}`}
+                  className={`flex flex-col items-start gap-4 ${index === 2 ? "mr-[-143px]" : ""} hover:scale-105 transition-all duration-300`}
+                >
+                  <img
+                    className={`${index === 2 ? "w-[143px]" : "w-[286px]"} h-[286px] object-cover rounded-2xl shadow-lg`}
+                    alt={activity.title}
+                    src={activity.image}
+                  />
+                  <h3 className="[font-family:'Manrope',Helvetica] font-semibold text-[#15191e] text-base leading-4">
+                    {activity.title}
+                  </h3>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -260,7 +263,7 @@ export const MainContentSection = (): JSX.Element => {
             Điều Khoản &amp; Quy Định
           </h2>
 
-          <Card className="p-5 bg-[#f1fffb] rounded-2xl border-none">
+          <Card className="p-5 bg-[#f1fffb] rounded-2xl border-none shadow-lg">
             <CardContent className="p-0 flex flex-col gap-4">
               {termsAndRegulations.map((term, index) => (
                 <div key={`term-${index}`} className="flex flex-col gap-3">
@@ -284,25 +287,25 @@ export const MainContentSection = (): JSX.Element => {
           <TabsList className="flex flex-wrap gap-[16px] bg-transparent h-auto p-0">
             <TabsTrigger
               value="program"
-              className="flex w-[198px] px-8 py-4 bg-[#e6fff9] rounded-[42px] text-[#00dba1] font-bold text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1]"
+              className="flex w-[198px] px-8 py-4 bg-[#e6fff9] rounded-[42px] text-[#00dba1] font-bold text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1] hover:bg-[#00dba1] hover:text-white transition-all duration-300"
             >
               Chương trình
             </TabsTrigger>
             <TabsTrigger
               value="price"
-              className="flex w-[200px] px-4 py-4 rounded-[42px] border border-solid border-[#d8dce3] text-[#15191e] font-normal text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1]"
+              className="flex w-[200px] px-4 py-4 rounded-[42px] border border-solid border-[#d8dce3] text-[#15191e] font-normal text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1] hover:bg-[#00dba1] hover:text-white hover:border-[#00dba1] transition-all duration-300"
             >
               Bảng giá
             </TabsTrigger>
             <TabsTrigger
               value="schedule"
-              className="flex w-[200px] px-4 py-4 rounded-[42px] border border-solid border-[#d8dce3] text-[#15191e] font-normal text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1]"
+              className="flex w-[200px] px-4 py-4 rounded-[42px] border border-solid border-[#d8dce3] text-[#15191e] font-normal text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1] hover:bg-[#00dba1] hover:text-white hover:border-[#00dba1] transition-all duration-300"
             >
               Lịch khởi hành
             </TabsTrigger>
             <TabsTrigger
               value="notes"
-              className="flex w-[200px] px-4 py-4 rounded-[42px] border border-solid border-[#d8dce3] text-[#15191e] font-normal text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1]"
+              className="flex w-[200px] px-4 py-4 rounded-[42px] border border-solid border-[#d8dce3] text-[#15191e] font-normal text-base data-[state=active]:bg-[#e6fff9] data-[state=active]:text-[#00dba1] hover:bg-[#00dba1] hover:text-white hover:border-[#00dba1] transition-all duration-300"
             >
               Ghi chú
             </TabsTrigger>
@@ -310,7 +313,7 @@ export const MainContentSection = (): JSX.Element => {
         </Tabs>
 
         {/* Tour Details Card */}
-        <Card className="flex flex-col gap-6 p-4 border border-solid border-[#00dba1] rounded-2xl">
+        <Card className="flex flex-col gap-6 p-4 border border-solid border-[#00dba1] rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
           <CardContent className="p-0 flex flex-col gap-4">
             {tourDetails.map((detail, index) => (
               <div
@@ -339,7 +342,7 @@ export const MainContentSection = (): JSX.Element => {
           </CardContent>
 
           {/* Tour Features */}
-          <Card className="flex flex-col gap-4 p-4 bg-[#e6fff9] rounded-lg border-none">
+          <Card className="flex flex-col gap-4 p-4 bg-[#e6fff9] rounded-lg border-none shadow-md">
             <CardContent className="p-0 flex flex-col gap-4">
               {tourFeatures.map((feature, index) => (
                 <div
@@ -367,7 +370,7 @@ export const MainContentSection = (): JSX.Element => {
                   2.750.000 ₫
                 </span>
               </div>
-              <Button className="px-8 py-4 bg-[#00dba1] text-white rounded-[42px] font-medium">
+              <Button className="px-8 py-4 bg-[#00dba1] text-white rounded-[42px] font-medium hover:bg-[#00c491] hover:scale-105 transition-all duration-300 shadow-lg">
                 Đặt lịch ngay
               </Button>
             </div>
@@ -375,7 +378,7 @@ export const MainContentSection = (): JSX.Element => {
         </Card>
 
         {/* Company Info Card */}
-        <Card className="flex flex-col gap-4 p-4 bg-neutral-50 rounded-2xl border-none h-[207px] relative">
+        <Card className="flex flex-col gap-4 p-4 bg-neutral-50 rounded-2xl border-none h-[207px] relative shadow-lg hover:shadow-xl transition-all duration-300">
           <CardContent className="p-0 flex flex-col gap-4">
             <div className="flex flex-col gap-3">
               <img
@@ -391,7 +394,7 @@ export const MainContentSection = (): JSX.Element => {
             <Separator className="w-full" />
 
             <div className="flex gap-3 h-12">
-              <Button className="flex-1 gap-2 p-3 bg-sup text-white rounded-[42px] font-medium">
+              <Button className="flex-1 gap-2 p-3 bg-sup text-white rounded-[42px] font-medium hover:bg-[#00c491] hover:scale-105 transition-all duration-300 shadow-md">
                 <img
                   className="w-6 h-6"
                   alt="Contact icon"
@@ -401,7 +404,7 @@ export const MainContentSection = (): JSX.Element => {
               </Button>
               <Button
                 variant="outline"
-                className="flex-1 px-8 py-4 bg-graygray-01 border border-solid border-[#00dba1] text-[#00dba1] rounded-[42px] font-medium"
+                className="flex-1 px-8 py-4 bg-graygray-01 border border-solid border-[#00dba1] text-[#00dba1] rounded-[42px] font-medium hover:bg-[#00dba1] hover:text-white transition-all duration-300 shadow-md"
               >
                 In-lưu tour
               </Button>
