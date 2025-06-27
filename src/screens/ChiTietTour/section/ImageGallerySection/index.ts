@@ -1,1 +1,1 @@
-export { ImageGallerySection } from "./ImageGallerySection/ImageGallerySection";
+export { ImageGallerySection } from "./ImageGallerySection";
